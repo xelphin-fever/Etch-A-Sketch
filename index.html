@@ -10,30 +10,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100&display=swap" rel="stylesheet"> 
 </head>
 <body>
+    <!--Top Bar-->
     <div class="top-container">
+        <!--Title-->
         <h1>Etch-A-Sketch</h1>
+        <!--Buttons-->
         <div class="button-container">
+            <!--Color Buttons-->
             <button class="color-button" id="btnRainbow" data-color="rainbow">Rainbow</button>
             <button class="color-button" id="btnPastel" data-color="pastel">Pastel</button>
             <button class="color-button" id="btnDark" data-color="dark">Dark</button>
-            <button class="color-button" id="btnDark" data-color="black">Black</button>
+            <button class="color-button" id="btnGolf" data-color="gold">Gold</button>
+            <!--Fade Toggle-->
             <div class="switchcontainer">
                 <label class="switch">
                     <h3 id="switchInput">Fade</h3>
                     <input type="checkbox" id="applyFade">
                 </label>
             </div>
+            <!--Grid Size Slide-->
             <div class="slidecontainer">
                 <h3 id="sliderInput">16</h3>
                 <input type="range" min="1" max="50" value="16" class="slider" id="gridSize">
             </div>
-            <button  id="reset">Reset</button>
+            <!--Reset-->
+            <button id="reset">Reset</button>
         </div>
     </div>
     
-    <!--In JS a grid is created-->
+    <!--In JS, a grid is created inside the below div-->
     <div class="grid-container"></div>
 
+    <!--JS Script-->
     <script src="./script.js"></script>
 </body>
 </html>

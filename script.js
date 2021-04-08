@@ -1,5 +1,7 @@
 
-
+//
+//INITIALIZE
+//
 let body = document.querySelector('body');
 let changedGrid = false;
 let gridLength =16;
@@ -14,12 +16,12 @@ applyFade.checked = true;
 const rainbowColors=makeColorGradient(.3,.3,.3,0,2,4);
 const pastelColors=makeColorGradient(.3,.3,.3,0,2,4, 230,50);
 const darkColors=makeColorGradient(.3,.3,.3,0,2,4,90,25);
-const blackColors=["(0,0,0)"];
+const goldColors=["(177, 143, 80)"];
 const myColors={
     "rainbow":rainbowColors,
     "pastel":pastelColors,
     "dark":darkColors,
-    "black":blackColors
+    "gold":goldColors
 };
 let currentColor = 0;
 let currentScheme = "rainbow";
@@ -28,7 +30,7 @@ colorButtons.forEach((button) => {
     button.addEventListener('click', () => {
       currentScheme=button.getAttribute('data-color');
     });
-  });
+});
 
 
 //
@@ -45,7 +47,7 @@ function makeGrid(myGrid){
     for (let i=0;i<(gridLength*gridLength);i++){
         //Initialize squares
         let newDiv = document.createElement('div');
-        newDiv.style.backgroundColor = 'white';
+        newDiv.style.backgroundColor = 'rgb(235, 232, 228)';
         newDiv.style.width = `${100/gridLength}%`;
         newDiv.style.height = `${100/gridLength}%`;
 
@@ -117,8 +119,6 @@ const reset = document.querySelector('#reset');
 reset.addEventListener('click', () => {
     changeGrid();
 });
-
-
 
 
 //
