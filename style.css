@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body{
+    position:relative;
+    background: lightgray;
+}
+
+
+.grid-container{
+    display: flex;
+    width: 100vw;
+    height:90vh;
+    padding:50px;
+    flex-wrap: wrap;
+}
+.grid-container div{
+    width: 6.25%;
+    height:6.25%;
+    border: 0.2px solid gray;
+}
+
+.turnWhite{
+    animation-name: toWhite;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+@keyframes toWhite{
+    100%{
+        background-color:white;
+        }
+}
