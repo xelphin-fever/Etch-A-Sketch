@@ -54,15 +54,17 @@ function deColorize(event){
 //
 //CHANGE GRID
 //
-const button = document.querySelector('.change-grid');
-button.addEventListener('click', changeGrid);
+//const button = document.querySelector('.change-grid');
+//button.addEventListener('click', changeGrid);
 
 function changeGrid(){
-    let ask =prompt("What NUMxNUM do you want the grid to be?");
-    while (ask>100){
-        ask= prompt("Please pick a number lower than 100");
-    }
-    gridLength=ask;
+    //let ask =prompt("What NUMxNUM do you want the grid to be?");
+    //while (ask>100){
+    //    ask= prompt("Please pick a number lower than 100");
+    //}
+    //gridLength=ask;
+    sliderInput.innerHTML = slider.value;
+    gridLength=slider.value;
     //Removing old Grid
     body.removeChild(grid);
     //Making new grid
@@ -73,3 +75,11 @@ function changeGrid(){
     body.appendChild(grid);
     
 }
+
+
+//
+//SLIDER
+//
+let slider = document.querySelector('#gridSize');
+const sliderInput = document.querySelector('#sliderInput');
+slider.addEventListener('input', changeGrid);

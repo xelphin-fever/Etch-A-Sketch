@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
     <link href="./style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <h1>Etch-A-Sketch</h1>
-    <div class="button-container">
-        <button class="change-grid">Change Grid Size</button>
+    <div class="top-container">
+        <h1>Etch-A-Sketch</h1>
+        <div class="button-container">
+            <div class="slidecontainer">
+                <h3 id="sliderInput">16</h3>
+                <input type="range" min="1" max="50" value="16" class="slider" id="gridSize">
+            </div>
+        </div>
     </div>
     
-    <!--In JS a 16x16 grid is created-->
+    <!--In JS a grid is created-->
     <div class="grid-container"></div>
 
     <script src="./script.js"></script>
