@@ -1,5 +1,16 @@
 
 
+let body = document.querySelector('body');
+let changedGrid = false;
+let gridLength =16;
+let applyFade = document.getElementById("applyFade");
+applyFade.checked = true;
+
+
+
+//
+//COLOR BUTTONS
+//
 const rainbowColors=makeColorGradient(.3,.3,.3,0,2,4);
 const pastelColors=makeColorGradient(.3,.3,.3,0,2,4, 230,50);
 const darkColors=makeColorGradient(.3,.3,.3,0,2,4,90,25);
@@ -12,14 +23,6 @@ const myColors={
 };
 let currentColor = 0;
 let currentScheme = "rainbow";
-let changedGrid = false;
-let gridLength =16;
-let body = document.querySelector('body');
-
-
-//
-//COLOR BUTTONS
-//
 const colorButtons=document.querySelectorAll('.color-button');
 colorButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -33,6 +36,7 @@ colorButtons.forEach((button) => {
 //
 let grid = document.querySelector('.grid-container');
 makeGrid(grid)
+let gridDivs=document.querySelectorAll('.grid-box');
 
 function makeGrid(myGrid){
     //for function 16 times:
@@ -67,11 +71,14 @@ function colorize(event){
         event.target.style.backgroundColor = `rgb${scheme[currentColor]}`; 
         currentColor=(currentColor+1)%scheme.length; 
     }
+    
 }
 
 function deColorize(event){
-    event.target.setAttribute('data-over','False');
-    event.target.classList.add('turnWhite');
+    if (applyFade.checked==true){
+        event.target.setAttribute('data-over','False');
+        event.target.classList.add('turnWhite');
+    }
 }
 
 
@@ -91,7 +98,7 @@ function changeGrid(){
     grid.classList.add('grid-container');
     makeGrid(grid);
     body.appendChild(grid);
-    
+    gridDivs=document.querySelectorAll('.grid-box');
 }
 
 
@@ -101,6 +108,15 @@ function changeGrid(){
 let slider = document.querySelector('#gridSize');
 const sliderInput = document.querySelector('#sliderInput');
 slider.addEventListener('input', changeGrid);
+
+
+//
+//RESET
+//
+const reset = document.querySelector('#reset');
+reset.addEventListener('click', () => {
+    changeGrid();
+});
 
 
 
