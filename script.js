@@ -1,5 +1,6 @@
 
-const rainbowColors = ["(255,0,0)","(255,127,0)","(255,255,0)","(0,255,0)","(0,0,255)","(75,0,130)","(143,0,255)"]
+//const rainbowColors = ["(255,0,0)","(255,127,0)","(255,255,0)","(0,255,0)","(0,0,255)","(75,0,130)","(143,0,255)"]
+let rainbowColors=makeColorGradient(.3,.3,.3,0,2,4);
 let currentColor = 0;
 let gridLength =16;
 let body = document.querySelector('body');
@@ -54,15 +55,9 @@ function deColorize(event){
 //
 //CHANGE GRID
 //
-//const button = document.querySelector('.change-grid');
-//button.addEventListener('click', changeGrid);
+
 
 function changeGrid(){
-    //let ask =prompt("What NUMxNUM do you want the grid to be?");
-    //while (ask>100){
-    //    ask= prompt("Please pick a number lower than 100");
-    //}
-    //gridLength=ask;
     sliderInput.innerHTML = slider.value;
     gridLength=slider.value;
     //Removing old Grid
@@ -83,3 +78,27 @@ function changeGrid(){
 let slider = document.querySelector('#gridSize');
 const sliderInput = document.querySelector('#sliderInput');
 slider.addEventListener('input', changeGrid);
+
+
+
+
+//
+//Color Function
+//
+function makeColorGradient(frequency1, frequency2, frequency3,
+    phase1, phase2, phase3,
+    center, width, len){
+    let colorArray=[]
+    if (center == undefined)   center = 128;
+    if (width == undefined)    width = 127;
+    if (len == undefined)      len = 50;
+
+    for (let j = 0; j < len; ++j){
+        let red = Math.sin(frequency1*j + phase1) * width + center;
+        let grn = Math.sin(frequency2*j + phase2) * width + center;
+        let blu = Math.sin(frequency3*j + phase3) * width + center;
+        //document.write( '<font color="' + RGB2Color(red,grn,blu) + '">&#9608;</font>');
+        colorArray[j]=`(${red},${grn},${blu})`;
+    }
+    return colorArray;
+}
