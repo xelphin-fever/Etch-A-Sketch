@@ -1,10 +1,32 @@
 
-//const rainbowColors = ["(255,0,0)","(255,127,0)","(255,255,0)","(0,255,0)","(0,0,255)","(75,0,130)","(143,0,255)"]
-let rainbowColors=makeColorGradient(.3,.3,.3,0,2,4);
+
+const rainbowColors=makeColorGradient(.3,.3,.3,0,2,4);
+const pastelColors=makeColorGradient(.3,.3,.3,0,2,4, 230,50);
+const darkColors=makeColorGradient(.3,.3,.3,0,2,4,90,25);
+const blackColors=["(0,0,0)"];
+const myColors={
+    "rainbow":rainbowColors,
+    "pastel":pastelColors,
+    "dark":darkColors,
+    "black":blackColors
+};
 let currentColor = 0;
+let currentScheme = "rainbow";
+let changedGrid = false;
 let gridLength =16;
 let body = document.querySelector('body');
-let changedGrid = false;
+
+
+//
+//COLOR BUTTONS
+//
+const colorButtons=document.querySelectorAll('.color-button');
+colorButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      currentScheme=button.getAttribute('data-color');
+    });
+  });
+
 
 //
 //MAKE GRID
@@ -41,8 +63,9 @@ function colorize(event){
     event.target.classList.remove('turnWhite');
     if (event.target.getAttribute('data-over')=='False'){
         event.target.setAttribute('data-over','True');
-        event.target.style.backgroundColor = `rgb${rainbowColors[currentColor]}`; 
-        currentColor=(currentColor+1)%rainbowColors.length; 
+        let scheme= myColors[currentScheme]
+        event.target.style.backgroundColor = `rgb${scheme[currentColor]}`; 
+        currentColor=(currentColor+1)%scheme.length; 
     }
 }
 
@@ -97,7 +120,6 @@ function makeColorGradient(frequency1, frequency2, frequency3,
         let red = Math.sin(frequency1*j + phase1) * width + center;
         let grn = Math.sin(frequency2*j + phase2) * width + center;
         let blu = Math.sin(frequency3*j + phase3) * width + center;
-        //document.write( '<font color="' + RGB2Color(red,grn,blu) + '">&#9608;</font>');
         colorArray[j]=`(${red},${grn},${blu})`;
     }
     return colorArray;
