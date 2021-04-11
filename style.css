@@ -82,9 +82,6 @@ h1{
     flex-wrap: wrap;
     transition: all 0.3s linear;
 }
-.grid-container:hover{
-    transform:scale(1.002);
-}
 .grid-container div{
     width: 6.25%;
     height:6.25%;
